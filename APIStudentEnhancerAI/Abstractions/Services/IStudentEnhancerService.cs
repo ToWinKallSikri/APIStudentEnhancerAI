@@ -1,6 +1,6 @@
 ﻿using APIStudentEnhancerAI.Models;
 
-namespace APIStudentEnhancerAI.Services
+namespace APIStudentEnhancerAI.Abstractions.Services
 {
     public interface IStudentEnhancerService
     {

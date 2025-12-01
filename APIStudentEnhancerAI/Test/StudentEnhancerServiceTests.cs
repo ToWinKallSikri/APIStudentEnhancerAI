@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using APIStudentEnhancerAI.Models;
 using APIStudentEnhancerAI.Services;
+using APIStudentEnhancerAI.Abstractions.Services;
 namespace StudentJourneyAI.Tests
 {
     [TestFixture]

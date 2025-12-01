@@ -1,4 +1,5 @@
-﻿using APIStudentEnhancerAI.Models;
+﻿using APIStudentEnhancerAI.Abstractions.Services;
+using APIStudentEnhancerAI.Models;
 namespace APIStudentEnhancerAI.Services
 {
     public class StudentEnhancerService : IStudentEnhancerService

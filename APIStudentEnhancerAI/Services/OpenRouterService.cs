@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using APIStudentEnhancerAI.Abstractions.Services;
+using System.Text.Json;
 
 namespace APIStudentEnhancerAI.Services
 {
@@ -60,16 +61,14 @@ namespace APIStudentEnhancerAI.Services
                     System.Text.Encoding.UTF8,
                     "application/json");
 
-                // Crea la richiesta HTTP
                 var httpRequest = new HttpRequestMessage(HttpMethod.Post,
                     "https://openrouter.ai/api/v1/chat/completions");
 
-                // Imposta il contenuto
                 httpRequest.Content = content;
 
                 // Aggiungi gli headers (SENZA User-Agent che può causare problemi)
                 httpRequest.Headers.Add("Authorization", $"Bearer {apiKey}");
-                httpRequest.Headers.Add("HTTP-Referer", "https://localhost:7001");
+                httpRequest.Headers.Add("HTTP-Referer", "https://localhost:7088");
                 httpRequest.Headers.Add("X-Title", "StudentJourneyAI");
 
                 _logger.LogInformation("Calling OpenRouter API with model: {Model}", model);

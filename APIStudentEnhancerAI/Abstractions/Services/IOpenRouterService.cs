@@ -1,4 +1,4 @@
-﻿namespace APIStudentEnhancerAI.Services
+﻿namespace APIStudentEnhancerAI.Abstractions.Services
 {
     public interface IOpenRouterService
     {

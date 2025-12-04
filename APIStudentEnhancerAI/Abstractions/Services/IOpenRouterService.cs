@@ -2,6 +2,6 @@
 {
     public interface IOpenRouterService
     {
-        Task<string> GenerateStudyGuideAsync(string topic);
+        Task<string> GenerateStudyGuideAsync(string topic, string context = null);
     }
 }

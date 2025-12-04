@@ -19,6 +19,7 @@ namespace StudentJourneyAI.Controllers
             _service = service;
             _logger = logger;
         }
+        // Simple health check endpoint to verify API is running
 
         [HttpGet("health")]
         public IActionResult GetHealth()
@@ -32,10 +33,11 @@ namespace StudentJourneyAI.Controllers
             });
         }
 
+        // AI enhancement feature endpoint
         [HttpPost("feature")]
-        public async Task<IActionResult> EnhanceStudentJourney(
-            [FromBody] StudentEnhancerRequest request)
+        public async Task<IActionResult> EnhanceStudentJourney([FromBody] StudentEnhancerRequest request)
         {
+            // Wrapping the logic in try-catch to handle potential errors gracefully
             try
             {
                 if (!ModelState.IsValid)

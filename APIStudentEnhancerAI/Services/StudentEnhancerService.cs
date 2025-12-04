@@ -7,6 +7,7 @@ namespace APIStudentEnhancerAI.Services
         private readonly IOpenRouterService _llmService;
         private readonly ILogger<StudentEnhancerService> _logger;
 
+        // OpenRouter Service injection through constructor
         public StudentEnhancerService(
             IOpenRouterService llmService,
             ILogger<StudentEnhancerService> logger)
@@ -17,22 +18,22 @@ namespace APIStudentEnhancerAI.Services
 
         public async Task<StudentEnhancerResponse> EnhanceStudentJourneyAsync(StudentEnhancerRequest request)
         {
+            // For a safer code execution everything is wrapped in a try-catch block
             try
             {
-                _logger.LogInformation("Processing enhancement request for goal: {Goal}", request.StudentGoal);
+                _logger.LogInformation("Processing enhancement request for topic: {Goal}", request.LearningGoal);
 
-                // Call OpenRouter to generate study guide
-                var enhancement = await _llmService.GenerateStudyGuideAsync(request.StudentGoal);
+                // Call OpenRouter to generate study guide giving it the student's goal that was provided as topic
+                // in the request, along witht the pre-prompt defined in the OpenRouter serivice implementation
+                // that explicitly asks the LLM to help the student as a Lancaster University student advisor.
+                var enhancement = await _llmService.GenerateStudyGuideAsync(request.LearningGoal, request.Context);
 
                 var response = new StudentEnhancerResponse
                 {
                     Enhancement = enhancement,
-                    TokensUsed = EstimateTokens(enhancement),
                     ProcessedAt = DateTime.UtcNow,
                     FeatureType = "StudyGuideGeneration"
                 };
-
-                _logger.LogInformation("Enhancement completed. Tokens used: {Tokens}", response.TokensUsed);
 
                 return response;
             }
@@ -41,12 +42,6 @@ namespace APIStudentEnhancerAI.Services
                 _logger.LogError(ex, "Error in EnhanceStudentJourneyAsync");
                 throw;
             }
-        }
-
-        private int EstimateTokens(string text)
-        {
-            // Rough estimation: ~4 characters per token
-            return (text?.Length ?? 0) / 4;
         }
     }
 }

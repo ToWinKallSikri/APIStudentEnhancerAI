@@ -57,7 +57,7 @@ Given the size of the task I preferred opting for a simple solution that priorit
     
       ```
 As a response the LLM provides a study guide that will enhance the student journey at Lancaster University in JSON format.
-The LLM that I used to record the demo was this model: tngtech/tng-r1t-chimera:free, available on OpenRouter. This information, along with the api key is stored in the appsettings.json congiguration file that I didn't upload in the repo (I know that for security reasons it's obvious, but I wanted to mention it for clarity). 
+The LLM that I used to record the demo was this model: tngtech/tng-r1t-chimera:free, available on [OpenRouter](https://openrouter.ai/tngtech/tng-r1t-chimera:free). This information, along with the api key is stored in the appsettings.json congiguration file that I didn't upload in the repo (I know that for security reasons it's obvious, but I wanted to mention it for clarity). 
 
 ## Approach 
 The approach that I adopted can be summarized in:
